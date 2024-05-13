@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage Calculator</title>
+    <style>
+        body {
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20190223/ourmid/pngtree-pure-beautiful-starry-grass-background-backgroundmeteorstarstarry-grassgrassland-under-image_86920.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 1000px;
+            margin: 100px auto; 
+            text-align: center;
+            font-size: 36px;
+            padding-bottom: 20px; 
+        }
+
+        input[type="number"],
+        button {
+            font-size: 36px; 
+            text-align: center; 
+            width: calc(50% - 4px); 
+            box-sizing: border-box; 
+            height: 100px; 
+            width: 500px;
+        }
+
+        button {
+            font-weight: bold; /* 设置按钮文本为粗体 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>クラファンパーセンテージ計算機</h2>
+        <input type="number" id="amount" placeholder="金額をここに入れて">
+        <button onclick="calculatePercentage()">計算</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculatePercentage() {
+            var amount = document.getElementById('amount').value;
+            var percentage = (amount / 3000000) * 100; // 将输入的金额除以300万，并乘以100得到百分比
+            document.getElementById('result').textContent = + percentage.toFixed(2) + "%です！"; // 将结果显示在页面上
+        }
+    </script>
+</body>
+</html>
