@@ -1,56 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Percentage Calculator</title>
+    <title>胡桃澤もも笑声集</title>
     <style>
-        body {
-            background-image: url('https://pbs.twimg.com/media/GNOGmzmbwAATYxl?format=jpg&name=4096x4096');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+        body, html {
             margin: 0;
             padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
         }
+        #container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            background-color: #000;
+        }
+        #bg-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease-out;
+            filter: brightness(0.8) saturate(1.2);
+        }
+        #character {
+            position: absolute;
+            bottom: -20%;
+            width: 45%;
+            height: auto;
+            transition: all 0.3s ease-out;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+        }
+        #title {
+            position: absolute;
+            right: 450px;
+            color: white;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+        #subtitle {
+            position: absolute;
+            right: 425px;
+            bottom: 0.5em; /* This positions the subtitle below the title */
+            color: white;
+            font-size: 1.25em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            z-index: 10;
+		}
+        #credit {
+            position: absolute;
+            right: 1em;
+            bottom: 1em; /* This positions the subtitle below the title */
+            color: white;
+            font-size: 0.5em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+        .glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+        }
+		#menu-box {
+			position: absolute;
+			top: 100px;
+			right: 100px;
+			background-color: rgba(255, 255, 255, 0.5);
+			border: 2px solid white;
+			padding: 20px;
+			border-radius: 10px;
+			z-index: 10;
+			width: 1000px; /* 設置固定寬度 */
+			max-height: 80vh; /* 設置最大高度 */
+			overflow-y: auto; /* 允許垂直滾動 */
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+			align-content: flex-start;
+		}
 
-        .container {
-            width: 1000px;
-            margin: 100px auto; 
-            text-align: center;
-            font-size: 36px;
-            padding-bottom: 20px; 
-        }
-
-        input[type="number"],
-        button {
-            font-size: 36px; 
-            text-align: center; 
-            width: calc(50% - 4px); 
-            box-sizing: border-box; 
-            height: 100px; 
-            width: 500px;
-        }
-
-        button {
-            font-weight: bold; 
-        }
+		.menu-button {
+			display: inline-block;
+			margin: 5px;
+			padding: 10px 20px;
+			background-color: #ff7cc3;
+			color: white;
+			text-decoration: none;
+			border-radius: 5px;
+			transition: background-color 0.3s;
+			flex-grow: 0;
+			flex-shrink: 0;
+		}
+		.menu-button:hover {
+		background-color: #d27cff;
+		}
+		#top-left-links {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			display: flex;
+			gap: 10px;
+			z-index: 20;
+		}
+		.top-left-link img {
+			width: 100px; /* 根據圖片大小調整 */
+			height: 100px;
+			border: none;
+			cursor: pointer;
+		}
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>クラファンパーセンテージ計算機</h2>
-        <input type="number" id="amount" placeholder="金額をここに入れて">
-        <button onclick="calculatePercentage()">計算</button>
-        <p id="result" style="background-color: white; font-size: 48px; max-width: 460px; margin: 0 auto; padding: 20px;"></p>
+    <div id="container">
+        <h1 id="title">胡桃澤もも笑声集</h1>
+        <p id="subtitle">胡桃澤ももの笑い方は2パターンに分けれる、「基本型」＆基本を基にした「複合型」。<br>「基本型」だと判断してます場合りはボタン後ろに*を付けます</p>
+        <p id="credit">胡桃澤もも笑い声研究所より。投稿受けてます。<br>左上の投稿を押してください</p>
+        <div class="glow"></div>
+        <img id="bg-image" src="image/sky.jpg" alt="天空背景">
+        <img id="character" src="image/momo.png" alt="人物">
+        <div id="menu-box">
+			<a href="#" id="1" class="menu-button">ハハハ➚➚➚</a>
+			<a href="#" id="2" class="menu-button">ハハハ</a>
+			<a href="#" id="3" class="menu-button">ハハハ➚</a>
+			<a href="#" id="4" class="menu-button">ぁハ↘ハハ</a>
+			<a href="#" id="5" class="menu-button">ぁハハハ➚➚➚</a>
+			<a href="#" id="6" class="menu-button">ぁハハハ</a>
+			<a href="#" id="7" class="menu-button">口閉じた笑声</a>
+			<a href="#" id="8" class="menu-button">ハーハーハハ</a>
+			<a href="#" id="9" class="menu-button">ハッハッハハ</a>
+			<a href="#" id="10" class="menu-button">ハッハ➚➚</a>
+			<a href="#" id="11" class="menu-button">ぁハハハー</a>
+			<a href="#" id="12" class="menu-button">ハ➚ハ➚ハ➚</a>
+			<a href="#" id="13" class="menu-button">ハ↺ハハハ</a>
+			<a href="#" id="14" class="menu-button">➚へーへへへ</a>
+			<a href="#" id="15" class="menu-button">➚ハーハハハ</a>
+			<a href="#" id="16" class="menu-button">幻の笑声</a>
+			<a href="#" id="17" class="menu-button">えへーへへへ</a>
+			<a href="#" id="18" class="menu-button">へへ</a>
+			<a href="#" id="19" class="menu-button">ハハハーハッ</a>
+			<a href="#" id="20" class="menu-button">笑い声の最後によくあるのやつ➚➚➚*</a>
+			<a href="#" id="21" class="menu-button">ハ➚ハ➚ハッ</a>
+			<a href="#" id="22" class="menu-button">笑い声の最後によくあるのやつ*</a>
+			<a href="#" id="23" class="menu-button">何か言いたいけど笑いすぎた笑い声</a>
+			<a href="#" id="24" class="menu-button">へへへ、ハハハ</a>
+			<a href="#" id="25" class="menu-button">ハーハーハハハ</a>
+			<a href="#" id="26" class="menu-button">➚ハーハーハー</a>
+			<a href="#" id="27" class="menu-button">ワンチャンからのハー</a>
+			<a href="#" id="28" class="menu-button">笑いすぎたの口閉じた笑声</a>
+			<a href="#" id="29" class="menu-button">苦笑い</a>
+			<a href="#" id="30" class="menu-button">笑いすぎてに苦しんてるの苦笑い</a>
+			<a href="#" id="31" class="menu-button">へッへ➚へ➚</a>
+			<a href="#" id="32" class="menu-button">普通笑いからのハー</a>
+			<a href="#" id="33" class="menu-button">爆笑の始まり*</a>
+			<a href="#" id="34" class="menu-button">ちょっとが言いたいけど出ないの笑い声</a>
+			<a href="#" id="35" class="menu-button">へへへ</a>
+			<a href="#" id="36" class="menu-button">軽めのハーからハハハ、</a>
+			<a href="#" id="37" class="menu-button">ハ➚➚➚ハ➚➚➚</a>
+			<a href="#" id="38" class="menu-button">口閉じてからのへへへハー</a>
+			<a href="#" id="39" class="menu-button">ハーハーハ</a>
+			<a href="#" id="40" class="menu-button">口閉じた苦笑い</a>
+        </div>
+		
+        <div id="top-left-links">
+            <a href="https://x.com/kurumizawamomo" class="top-left-link" target="_blank">
+                <img src="image/x.png" alt="X Image">
+            </a>
+            <a href="https://www.youtube.com/@kurumizawamomo" class="top-left-link" target="_blank">
+                <img src="image/yt.png" alt="YT Image">
+            </a>
+            <a href="https://docs.google.com/spreadsheets/d/1MEQ6kqhrZ7sCTnM_kjBen9GbZfcdfnwTEXyh8IVoz4s/edit?usp=sharing" class="top-left-link" target="_blank">
+                <img src="image/doc.png" alt="DOC Image">
+            </a>
+        </div>
     </div>
-
-    <script>
-        function calculatePercentage() {
-            var amount = document.getElementById('amount').value;
-            var percentage = (amount / 3000000) * 100; 
-            document.getElementById('result').textContent = + percentage.toFixed(2) + "%です！";
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
