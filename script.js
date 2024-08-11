@@ -37,7 +37,7 @@ container.addEventListener('mousemove', (e) => {
 
 // 音效路徑生成函數
 function getSoundById(id) {
-    return new Audio(`sound/${id}.mp3`);
+    return new Audio(`sound/${id}.MP3`);
 }
 
 let currentAudio = null;
