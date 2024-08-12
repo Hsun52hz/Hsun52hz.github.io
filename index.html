@@ -117,6 +117,100 @@
 			border: none;
 			cursor: pointer;
 		}
+		@media screen and (max-width: 767px)  {
+		#container {
+			display: flex;
+			flex-direction: column;
+			height: 100vh;
+			overflow: hidden;
+			position: relative;
+		}
+
+		#title {
+			position: static;
+			text-align: center;
+			font-size: 2em;
+			margin-top: 80px;
+			z-index: 2;
+		}
+
+		#subtitle {
+			position: static;
+			text-align: center;
+			font-size: 0.5em;
+			margin: -20px 20px;
+			z-index: 2;
+		}
+
+		#credit {
+			position: absolute;
+			bottom: 10px;
+			left: 0;
+			right: 0;
+			text-align: center;
+			font-size: 0.8em;
+			z-index: 2;
+		}
+
+		#character {
+			position: absolute;
+			bottom: -5%;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 125%;
+			max-height: 70vh;
+			object-fit: contain;
+			z-index: 1;
+		}
+
+		#menu-box {
+			position: absolute;
+			top: 200px; /* 調整此值以適應標題和副標題的高度 */
+			left: 5%;
+			right: 5%;
+			bottom: 75px; /* 為底部的 credit 留出空間 */
+			width: 80%;
+			overflow-y: auto;
+			background-color: rgba(255, 255, 255, 0.7);
+			z-index: 3;
+			-webkit-overflow-scrolling: touch;
+		}
+
+		.menu-button {
+			width: calc(30%);
+			margin: 12px;
+			font-size: 0.9em;
+		}
+
+		#top-left-links {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			z-index: 4;
+		}
+
+		.top-left-link img {
+			width: 60px;
+			height: 60px;
+		}
+	}
+		#menu-box::-webkit-scrollbar {
+			width: 8px;
+		}
+
+		#menu-box::-webkit-scrollbar-track {
+			background: #f1f1f1;
+		}
+
+		#menu-box::-webkit-scrollbar-thumb {
+			background: #888;
+			border-radius: 4px;
+		}
+
+		#menu-box::-webkit-scrollbar-thumb:hover {
+			background: #555;
+		}
+	}
     </style>
 </head>
 <body>
